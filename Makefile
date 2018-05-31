@@ -1,6 +1,6 @@
 all: test run
 
-SRC = -L ~/workspace/src
+SRC = -L ~/workspace/src                                                                                                                                                                                                                                                                                       
 INC = -I ~/workspace/include
 CFLAG = -g -Wall
 
