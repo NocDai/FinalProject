@@ -27,8 +27,14 @@ test: test.cpp
     
 下指令make run
 系統會先去Makefile找到run這個目標
-然後先完成它的條件main的內容(g++那兩行)
-再回來執行run的內容(./main)
+
+先完成它的條件main
+然後main又有兩個條件 test 和main.cpp
+執行條件的時候會依序執行 先找test跑完再找main.cpp
+當條件都執行完畢後再回來執行main的內容(g++兩行)
+
+最後再跳回來執行run的內容(./main)
+
 
 記得在編寫目標內容的時候
 指令的縮排必須以TAB (/t)縮排
