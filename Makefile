@@ -1,7 +1,9 @@
+##
+
 all: test run
 
-SRC = -L ~/workspace/src                                                                                                                                                                                                                                                                                       
-INC = -I ~/workspace/include
+SRC = -L ./src                                                                                                                                                                                                                                                                                       
+INC = -I ./include
 CFLAG = -g -Wall
 
 test: test.o

@@ -1,0 +1,39 @@
+Makefile 檔案名字是預設的
+當在目前位置下make指令的時候，它就會去找在當前位置的Makefile
+
+以下僅做簡單說明，如果想知道更詳細可以去google應該蠻多教學的
+
+Makefile編寫：
+主要分成兩部分 目標 條件
+ex: 
+all: test test1
+ ^     ^    ^
+目標 條件1條件2
+
+當你下make (目標) 時，電腦就會去找到Makefile裡面所寫的目標
+並且在完成後面敘述的條件後，就會執行目標的內容
+
+ex:
+Makefile內容：
+run: main
+    ./main
+
+main: test main.cpp
+    g++ -c main.c
+    g++ -o main main.o test.o
+
+test: test.cpp
+    g++ -c test.cpp
+    
+下指令make run
+系統會先去Makefile找到run這個目標
+然後先完成它的條件main的內容(g++那兩行)
+再回來執行run的內容(./main)
+
+記得在編寫目標內容的時候
+指令的縮排必須以TAB (/t)縮排
+否則會被視為無效
+
+另外all這個目標是預設目標
+也就是指令只下make(沒有給後面的目標)
+那它就會去找all這個目標來執行
