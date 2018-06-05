@@ -14,4 +14,4 @@ run:
 	./main ./include/map.txt
 	
 clean:
-	rm -f main.o
+	rm -f main.o main
