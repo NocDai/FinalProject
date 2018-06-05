@@ -32,7 +32,7 @@ class map{
                 for(int j=0; j<5; j++){
                     cout << place[i][j] << " ";
                 }
-                cout << endl;
+                cout << "\r\n";
             }
         }
         void setPlace(int x, int y, char obj){

@@ -8,7 +8,7 @@ CFLAG = -g -Wall
 main: main.o
 	g++ -o main main.o
 main.o:
-	g++ -c ~/workspace/FinalProject/include/main.cpp
+	g++ -c ./include/main.cpp
 
 run:
 	./main ./include/map.txt
