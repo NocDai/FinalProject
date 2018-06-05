@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <fstream>
+#include "coordinate.h"
 using namespace std;
 
 class map{
@@ -33,6 +34,9 @@ class map{
                 }
                 cout << endl;
             }
+        }
+        void setPlace(int x, int y, char obj){
+            place[x][y] = obj;
         }
     protected:
         int dim;
