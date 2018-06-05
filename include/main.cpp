@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <stdio.h>
+#include <stdlib.h>
 #include <curses.h>
 #include "map.h"
 #include "player.h"
@@ -20,6 +21,7 @@ int main(int argc, char *argv[]){
         else if(c=='a') cout<<'<'<<endl;
         else if(c=='s') cout<<'v'<<endl;
         else if(c=='d') cout<<'>'<<endl;
+        system("clear");
         Map.printMap();
     }
     endwin();

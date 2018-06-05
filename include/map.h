@@ -28,6 +28,7 @@ class map{
             place = NULL;
         }
         void printMap(){
+            cout << "\r\n";
             for(int i=0; i<5; i++){
                 for(int j=0; j<5; j++){
                     cout << place[i][j] << " ";
