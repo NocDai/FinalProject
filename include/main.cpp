@@ -12,16 +12,15 @@ int main(int argc, char *argv[]){
     ifstream infile(argv[1]);
     map Map(infile);
     Player P(0, 0, Map);
-    //Map.printMap();
     WINDOW *w=initscr();
+    char c;
     while(1){
-        char c;
-        c = getch();
+        while((c = getch())!='w')   cout<<"flag.";
         if(c=='w')      cout<<'^'<<endl;
         else if(c=='a') cout<<'<'<<endl;
         else if(c=='s') cout<<'v'<<endl;
         else if(c=='d') cout<<'>'<<endl;
-        system("clear");
+        //system("clear");
         Map.printMap();
     }
     endwin();

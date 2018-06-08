@@ -1,5 +1,5 @@
 
-all: main run
+all: clean main run
 
 SRC = -L ./src                                                                                                                                                                                                                                                                                       
 INC = -I ./include
