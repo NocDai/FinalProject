@@ -7,7 +7,7 @@
 class Player: private coordinate{
     public:
         Player(int x, int y, map& m):coordinate(x, y){
-            m.setPlace(x, y , 'P');
+            m.setPlace(x, y , player);
         }
         
         void remember();

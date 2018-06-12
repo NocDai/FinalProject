@@ -13,8 +13,16 @@ int main(int argc, char *argv[]){
     ifstream infile(argv[1]);
     map Map(infile);
     Player P(0, 0, Map);
+    Map.printMap();
     while(1){
-        if(kbhit());
+        if(kbhit()){
+            if(getchar()=='w'){
+                Map.setPlace(0,0,Non);
+            }
+        }
+        Map.printMap();
+        delay();
+        system("clear");
     }
     cout<<"flag."<<endl;
     
