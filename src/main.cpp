@@ -11,20 +11,26 @@ using namespace std;
 
 int main(int argc, char *argv[]){
     ifstream infile(argv[1]);
-    map Map(infile);
-    Player P(0, 0, Map);
-    Map.printMap();
+    Map map(infile);
+    map.printMap();
+    cout<<"Please choose the mode."<<endl
+        <<"input 1 for manual."<<endl
+        <<"input 2 for auto."<<endl;
+    int mode;
+    cin >>mode;
+    Player P(0, 0, map, mode);
+    map.printMap();
     while(1){
-        if(kbhit()){
-            if(getchar()=='w'){
-                Map.setPlace(0,0,Non);
-            }
-        }
-        Map.printMap();
-        delay();
+        char command='\0';
+        if(kbhit())
+            command = getchar();
+        
+        P.walk(command, map);
         system("clear");
+        map.printMap();
+        delay();
+        delay();
     }
-    cout<<"flag."<<endl;
     
     return 0;
 }
