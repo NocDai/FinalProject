@@ -3,6 +3,7 @@
 #include <unistd.h>  
 #include <fcntl.h>
 
+#include "controller.h"
 int kbhit(void)  
 {  
   struct termios oldt, newt;  
@@ -25,6 +26,6 @@ int kbhit(void)
   return 0;  
 }
 
-void delay(){
+void delay(void){
     for(int i=0;i<100000000;i++);
 }

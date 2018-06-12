@@ -5,6 +5,7 @@
 #include <curses.h>
 #include "map.h"
 #include "player.h"
+#include "controller.h"
 //#include "coordinate.h"
 using namespace std;
 
