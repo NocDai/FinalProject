@@ -4,31 +4,29 @@
 #include "coordinate.h"
 #include "map.h"
 #include <vector>
-class Player: private coordinate{
+class Player: private Coordinate{
     public:
         Player(int x, int y, Map& m, int _mode);
-        
+        Player(Coordinate , Map& , int );
         void walk(char com, Map& m){
             int pre_x = x;
             int pre_y = y;
-            if(com == 's'){
-                if(y++ > 4)
-                    y = pre_y;
+            if(com == 's')  y++;
+            else if(com == 'a') x--;
+            else if(com == 'w') y--;
+            else if(com == 'd') x++;
+            if(x>6) x=6;
+            else if (x<0)   x=0;
+            if(y>6) y=6;
+            else if (y<0)   y=0;
+            if(m.isfree(Coordinate(x,y))){
+                m.setPlace(Coordinate(pre_x,pre_y), Non);
+                m.setPlace(*this, player);
             }
-            else if(com == 'a'){
-                if(x-- < 0)
-                    x = pre_x;
+            else{
+                x = pre_x;
+                y = pre_y;
             }
-            else if(com == 'w'){
-                if(y-- < 0)
-                    y = pre_y;
-            }
-            else if(com == 'd'){
-                if(x++ > 4)
-                    x = pre_x;
-            }
-            m.setPlace(pre_x, pre_y, Non);
-            m.setPlace(x, y, player);
         }
     private:
         int mode;

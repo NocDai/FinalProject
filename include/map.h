@@ -3,15 +3,20 @@
 
 #include <iostream>
 #include <fstream>
+#include <cstdlib>
+#include <ctime>
 #include "coordinate.h"
 using namespace std;
-enum OBJ {Non,Wall,player,Ghost,Key,Spot};
+enum OBJ {Non,Wall,player,ghost,key,spot};
 class Map{
     public:
         Map(ifstream &file);
         ~Map();
         void printMap();
-        void setPlace(int x, int y, OBJ obj);
+        bool setPlace(Coordinate coord, OBJ obj);
+        bool isfree(Coordinate);
+        OBJ collision();
+        Coordinate GetFreeplace();
     protected:
         int dim;
         OBJ **place;

@@ -27,5 +27,8 @@ int kbhit(void)
 }
 
 void delay(void){
-    for(int i=0;i<100000000;i++);
+    for(int i=0;i<50000000;i++);
+}
+
+void initializer(){
 }

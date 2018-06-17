@@ -1,15 +1,20 @@
 #ifndef COORDINATE_H
 #define COORDINATE_H
 
-class coordinate{
+#include <iostream>
+using namespace std;
+class Coordinate{
     public:
-        coordinate(int xpos, int ypos):x(xpos),y(ypos){}
-        ~coordinate(){}
+        Coordinate(int xpos, int ypos):x(xpos),y(ypos){}
+        ~Coordinate(){}
         int getX(){
             return x;
         }
         int getY(){
             return y;
+        }
+        void show(){
+            cout<<x<<','<<y<<endl;
         }
     protected:
         int x;
