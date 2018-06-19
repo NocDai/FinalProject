@@ -5,6 +5,7 @@
 //#include <curses.h>
 #include "map.h"
 #include "player.h"
+#include "ghost.h"
 #include "keyandpass.h"
 #include "controller.h"
 //#include "coordinate.h"
@@ -23,18 +24,21 @@ int main(int argc, char *argv[]){
     Player P(map.GetFreeplace(), map, mode);
     Key K(map.GetFreeplace(), map);
     PassSpot PS(map.GetFreeplace(), map);
+    Ghost G(map.GetFreeplace(),map);
     map.printMap();
     char command = '\0';
     bool Over = false;
     while(!Over){
-        Over = Update(P, K, PS, map);
         command='\0';
         if(kbhit())
             command = getchar();
-        
-        P.walk(command, map);
         system("clear");
+        P.walk(command, map);
+        G.walk(P,map);
+        //system("clear");
         map.printMap();
+        Over = Update(P, K, PS, map);
+        G.show();
         delay();
     }
     

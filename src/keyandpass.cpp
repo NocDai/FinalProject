@@ -12,8 +12,8 @@ Key::Key(Coordinate coord, Map& m):Coordinate(coord){
 
 void Key::taken(Map& m, PassSpot& ps){
     m.setPlace(*this, Non);
-    ps.is_hidden = false;
     ps.appear(m);
+    ps.is_hidden = false;
 }
 
 PassSpot::PassSpot(int x, int y, Map& m):Coordinate(x,y){
@@ -25,5 +25,10 @@ PassSpot::PassSpot(Coordinate coord, Map& m):Coordinate(coord){
 }
 
 void PassSpot::appear(Map& m){
-    m.setPlace(*this, spot);
+    if(is_hidden==true){
+        Coordinate c = m.GetFreeplace();
+        x =c.getX();
+        y =c.getY();
+        m.setPlace(*this, spot);
+    }
 }

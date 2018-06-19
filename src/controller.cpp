@@ -36,12 +36,15 @@ void delay(void){
 bool Update(Player& p, Key& k, PassSpot& ps, Map& m){
     if(p.pass_check()){
         over = true;
+        printf("You Win\r\n");
+        return over;
     }
     if(p.dead_check()){
         over = true;
     }
     if(p.key_check()){
         k.taken(m, ps);
+        printf("You have key now!!!\r\n");
     }
     
     return over;

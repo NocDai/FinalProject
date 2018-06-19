@@ -17,6 +17,7 @@ class Map{
         bool isfree(Coordinate);
         OBJ collision(Coordinate);
         Coordinate GetFreeplace();
+        OBJ aplace(int x, int y);
     protected:
         int dim;
         OBJ **place;

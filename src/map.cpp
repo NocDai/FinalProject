@@ -70,3 +70,7 @@ Coordinate Map::GetFreeplace(){
 OBJ Map::collision(Coordinate coord){
     return place[coord.getY()][coord.getX()];
 }
+
+OBJ Map::aplace(int x, int y){
+    return place[y][x];
+}

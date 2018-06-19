@@ -9,7 +9,7 @@ class Player: public Coordinate{
         Player(int x, int y, Map& m, int _mode);
         Player(Coordinate , Map& , int);
         void walk(char , Map&);
-        bool set(Coordinate, Map&);
+        void be_killed();
         bool dead_check();
         bool key_check();
         bool pass_check();
@@ -22,6 +22,7 @@ class Player: public Coordinate{
         bool pass;
         void remember();
         void find_path();
+        bool set(Coordinate, Map&);
         
         void walk();
 };
