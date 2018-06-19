@@ -11,9 +11,7 @@ void Ghost::look_around(Map& m){
     for(int i=0; i<3; i++){
         for(int j=0; j<3 ;j++){
             sight[i][j] = m.aplace(x-1+j, y-1+i);
-            std::cout<<sight[i][j]<<' ';
         }
-        std::cout<<"\r\n";
     }
 }
 
@@ -30,9 +28,7 @@ char Ghost::find_path(){
             else
                 policy[i][j] = 1;
             
-            std::cout<<policy[i][j]<<' ';
         }
-        std::cout<<"\r\n";
     }
     
     if(policy[0][1]!=0){
@@ -47,7 +43,6 @@ char Ghost::find_path(){
     if(policy[2][1]!=0){
         policy[2][1] = policy[2][0]+ 2*policy[2][1]+ policy[2][2];
     }
-    std::cout<<policy[0][1]<<policy[1][0]<<policy[1][2]<<policy[2][1]<<"\r\n";
     int p_path[4] = {policy[0][1], policy[1][0], policy[1][2], policy[2][1]};
     char path[4]= {'w', 'a', 'd', 's'};
     for(int i=0;i<4;i++){
@@ -55,7 +50,7 @@ char Ghost::find_path(){
             p_path[i+1]=p_path[i];
             path[i+1] = path[i];
         }
-    }
+    } 
     //std::cout<<max_p<<std::endl;
     return path[3];
 }
@@ -67,7 +62,6 @@ void Ghost::kill(Player& p){
 void Ghost::walk(Player& pl, Map& m){
     look_around(m);
     char p=find_path();
-    std::cout<<p<<std::endl;
     int pre_x = x;
     int pre_y = y;
     if(p == 's')  y++;
@@ -90,7 +84,10 @@ void Ghost::walk(Player& pl, Map& m){
         y = pre_y;
     }
     else if(obj == Non){
-        m.setPlace(Coordinate(pre_x,pre_y), Non);
+        OBJ pre = m.collision(Coordinate(pre_x,pre_y));
+        if(pre==ghost){
+            m.setPlace(Coordinate(pre_x,pre_y), Non);
+        }
         m.setPlace(Coordinate(x,y), ghost);
     }
     else{
