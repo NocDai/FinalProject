@@ -1,8 +1,8 @@
 #include <iostream>
 #include <fstream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <curses.h>
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <curses.h>
 #include "map.h"
 #include "player.h"
 #include "keyandpass.h"
@@ -22,9 +22,13 @@ int main(int argc, char *argv[]){
     cin >>mode;
     Player P(map.GetFreeplace(), map, mode);
     Key K(map.GetFreeplace(), map);
+    PassSpot PS(map.GetFreeplace(), map);
     map.printMap();
-    while(1){
-        char command='\0';
+    char command = '\0';
+    bool Over = false;
+    while(!Over){
+        Over = Update(P, K, PS, map);
+        command='\0';
         if(kbhit())
             command = getchar();
         
@@ -32,7 +36,6 @@ int main(int argc, char *argv[]){
         system("clear");
         map.printMap();
         delay();
-        //delay();
     }
     
     return 0;

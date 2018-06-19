@@ -13,9 +13,9 @@ class Map{
         Map(ifstream &file);
         ~Map();
         void printMap();
-        bool setPlace(Coordinate coord, OBJ obj);
+        bool setPlace(Coordinate, OBJ);
         bool isfree(Coordinate);
-        OBJ collision();
+        OBJ collision(Coordinate);
         Coordinate GetFreeplace();
     protected:
         int dim;

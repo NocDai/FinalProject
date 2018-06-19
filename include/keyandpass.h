@@ -4,21 +4,23 @@
 #include "map.h"
 #include "coordinate.h"
 
-class PassSpot: private Coordinate{
+class PassSpot: public Coordinate{
     friend class Key;
     public:
         PassSpot(int, int, Map&);
         PassSpot(Coordinate, Map&);
         void appear(Map &);
+        void setPlace();
     private:
         bool is_hidden;
 };
 
-class Key:private Coordinate{
+class Key: public Coordinate{
     public:
         Key(int, int, Map&);
         Key(Coordinate, Map&);
         void taken(Map&, PassSpot&);
+        void setPlace();
     private:
         bool is_taken;
 };

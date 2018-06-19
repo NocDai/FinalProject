@@ -67,6 +67,6 @@ Coordinate Map::GetFreeplace(){
     return Coordinate(x,y);
 }
 
-OBJ Map::collision(){
-    
+OBJ Map::collision(Coordinate coord){
+    return place[coord.getY()][coord.getX()];
 }

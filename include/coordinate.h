@@ -2,6 +2,7 @@
 #define COORDINATE_H
 
 #include <iostream>
+//#include "map.h"
 using namespace std;
 class Coordinate{
     public:
