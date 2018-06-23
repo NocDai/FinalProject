@@ -30,21 +30,26 @@ int main(int argc, char *argv[]){
     bool Over = false;
     int g_speed=0;
     while(!Over){
-        g_speed++;
-        command='\0';
-        if(kbhit())
-            command = getchar();
-        system("clear");
-        P.walk(command, map);
-        if(g_speed==10){
-            g_speed =0;
-            G.walk(P,map);
+        if(mode == 1){
+            g_speed++;
+            command='\0';
+            if(kbhit())
+                command = getchar();
+            system("clear");
+            P.walk(command, map);
+            if(g_speed==10){
+                g_speed =0;
+                G.walk(P,map);
+            }
+            //system("clear");
+            map.printMap();
+            Over = Update(P, K, PS, map);
+            G.show();
+            delay();
         }
-        //system("clear");
-        map.printMap();
-        Over = Update(P, K, PS, map);
-        G.show();
-        delay();
+        else if(mode==2){
+            
+        }
     }
     
     return 0;

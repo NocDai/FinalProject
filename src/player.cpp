@@ -66,7 +66,7 @@ bool Player::set(Coordinate pre, Map& m){
     }
     else if(obj == ghost){
         m.setPlace(pre,Non);
-        isdead =true;
+        //isdead =true;
     }
     return true;
 }
@@ -84,5 +84,5 @@ bool Player::pass_check(){
 }
 
 void Player::be_killed(){
-    isdead = true;
+    //isdead = true;
 }
