@@ -2,6 +2,9 @@
 #define COORDINATE_H
 
 #include <iostream>
+//=======================
+#include <vector>
+//=======================
 //#include "map.h"
 using namespace std;
 class Coordinate{
@@ -21,5 +24,31 @@ class Coordinate{
         int x;
         int y;
 };
+
+//================================
+struct Point{  
+    //行与列
+    int row;  
+    int col;  
+
+    //默认构造函数
+    Point(){
+        row=col=-1;
+    }
+
+    Point(int x,int y){
+        this->row=x;
+        this->col=y;
+    }
+
+    bool operator==(const Point& rhs) const{
+        if(this->row==rhs.row&&this->col==rhs.col)
+            return true;
+        return false;
+    }
+};
+
+void mazePath(void* ,int ,int , Point& , Point ,vector<Point>& );
+//==================================
 
 #endif

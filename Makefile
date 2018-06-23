@@ -5,8 +5,8 @@ SRC = -L ./src
 INC = -I ./include
 CFLAG = -g -Wall
 
-main: controller.o player.o map.o keyandpass.o ghost.o main.o
-	g++ -o main main.o controller.o player.o keyandpass.o ghost.o map.o
+main: controller.o player.o map.o keyandpass.o ghost.o BFS.o main.o 
+	g++ -o main main.o controller.o player.o keyandpass.o ghost.o map.o BFS.o
 
 main.o:
 	g++ -c $(S_PATH)main.cpp $(INC) $(CFLAG)
@@ -25,9 +25,12 @@ keyandpass.o:
 	
 ghost.o:
 	g++ -c $(S_PATH)ghost.cpp $(INC) $(CFLAG)
+	
+BFS.o:
+	g++ -c $(S_PATH)BFS.cpp $(INC) $(CFLAG)
 
 run:
 	./main ./include/map.txt
 
 clean:
-	rm -f main.o controller.o player.o map.o keyandpass.o ghost.o main
+	rm -f main.o controller.o player.o map.o keyandpass.o ghost.o BFS.o main
