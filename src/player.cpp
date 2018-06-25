@@ -95,7 +95,7 @@ bool Player::pass_check(){
 }
 
 void Player::be_killed(){
-    //isdead = true;
+    isdead = true;
 }
 
 void Player::look_around(Map& m){
@@ -121,6 +121,9 @@ void Player::remember(Map &m){
             if(m.collision(now_see[i][j])==key || m.collision(now_see[i][j])==spot){
                 score[now_see[i][j]] += 10;
             }
+            if(m.collision(now_see[i][j])==ghost){
+                score[now_see[i][j]] -= 1;
+            }
         }
     }
     for(int i=0; i<3; i++){
@@ -131,14 +134,14 @@ void Player::remember(Map &m){
             else if(sight[i][j]==1)
                 score.insert(pair<Coordinate,float>(now_see[i][j],0));
             else if(sight[i][j]==3)
-                score.insert(pair<Coordinate,float>(now_see[i][j],-10));
+                score.insert(pair<Coordinate,float>(now_see[i][j],0));
             else if(sight[i][j]==4)
                 score.insert(pair<Coordinate,float>(now_see[i][j],100));
             else if(sight[i][j]==5)
                 score.insert(pair<Coordinate,float>(now_see[i][j],100));
         }
     }
-    float GAMMA = 0.005;
+    float GAMMA = 0.00005;
     for(map<Coordinate,float>::iterator it = score.begin(); it!=score.end(); it++){
         it->second *= GAMMA;
     }
@@ -182,10 +185,15 @@ char Player::find_path(Map &m){
         int i = rand()%4;
         return path[i];
     }
-    if(m.aplace(x,y-1)==Wall)   policy[0]=0;
-    if(m.aplace(x-1,y)==Wall)   policy[1]=0;
-    if(m.aplace(x,y+1)==Wall)   policy[2]=0;
-    if(m.aplace(x+1,y)==Wall)   policy[3]=0;
+    
+    if(m.aplace(x,y-1)==Wall)   policy[0]=-1;
+    else if(m.aplace(x,y-1)==ghost) policy[0]= -1;
+    if(m.aplace(x-1,y)==Wall)   policy[1]=-1;
+    else if(m.aplace(x-1,y)==ghost) policy[1]= -1;
+    if(m.aplace(x,y+1)==Wall)   policy[2]=-1;
+    else if(m.aplace(x-1,y)==ghost) policy[2]= -1;
+    if(m.aplace(x+1,y)==Wall)   policy[3]=-1;
+    else if(m.aplace(x-1,y)==ghost) policy[3]= -1;
     for(int i=0;i<4;i++){
         if(policy[i]>policy[i+1]){
             policy[i+1]=policy[i];
