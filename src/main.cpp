@@ -58,8 +58,23 @@ int main(int argc, char *argv[]){
             G.show();
             delay();
         }
+        if(mode == 2){
+            g_speed++;
+            system("clear");
+            P.walk(map);
+            if(g_speed==10){
+                g_speed =0;
+                G.walk(P,map);
+                //P.walk(map);
+            }
+            //system("clear");
+            map.printMap();
+            Over = Update(P, K, PS, map);
+            G.show();
+            delay();
+        }
         //===========================================
-        else if(mode==2){
+        else if(mode==3){
 		int maze[7][7]={
     		{1,1,1,1,1,1,1},
     		{1,0,1,1,1,0,1},
@@ -80,6 +95,53 @@ int main(int argc, char *argv[]){
                 cout<<"shortest path to key:";
                 for(vector<Coordinate>::reverse_iterator i=keyPath.rbegin(); i!=keyPath.rend(); ++i){
                     printf("(%d,%d) ",i->getX(),i->getY());
+        /*else if(mode==2){
+            if(calc_flag==0){
+                int maze[7][7]={
+                    {1,1,1,1,1,1,1},
+                    {1,0,1,1,1,0,1},
+                    {1,0,0,1,0,0,1},
+                    {1,0,1,0,0,0,1},
+                    {1,0,0,0,1,1,1},
+                    {1,1,0,0,0,0,1},
+                    {1,1,1,1,1,1,1}
+                    };
+                
+                Point startP(1,1);  //start coordinate, 先假設拿到
+                Point keyP(1,5);    //key coordinate
+                
+                mazePath(maze,7,7,startP,keyP,keyPath);
+                
+                
+                //Over = Update(P, K, PS, map);   //BFS不能一直更新
+                Point endP(5,5);   //end coordinate
+                
+                mazePath(maze,7,7,keyP,endP,endPath);
+                
+                calc_flag++;
+                
+            }
+            if(calc_flag==1){
+                if(keyPath.empty()==true)
+                    cout<<"no right path"<<endl;
+                else{
+                    cout<<"shortest path to key:";
+
+                    for(vector<Point>::reverse_iterator i=keyPath.rbegin(); i!=keyPath.rend(); ++i){
+                        printf("(%d,%d) ",i->row,i->col);   
+            
+                    }
+                }
+                cout << endl;
+                if(endPath.empty()==true)
+                    cout<<"no right path"<<endl;
+                else{
+                    cout<<"shortest path from key to end:";
+                    for(vector<Point>::reverse_iterator i=endPath.rbegin(); i!=endPath.rend(); ++i){
+                        printf("(%d,%d) ",i->row,i->col);  
+            
+                    }
+>>>>>>> 515cd8751b1ca14150445a04a26ff760adb9ab86
                 }
                 cout << endl;
 		//map.printMap();
@@ -87,11 +149,23 @@ int main(int argc, char *argv[]){
                 for(vector<Coordinate>::reverse_iterator i=endPath.rbegin(); i!=endPath.rend(); ++i){
                     printf("(%d,%d) ",i->getX(),i->getY()); 
                 }
+<<<<<<< HEAD
 		cout << endl;
 		Over=true;
             	//Over = Update(P, K, PS, map);
 	}
         
+=======
+                //system("clear");
+                map.printMap();
+                Over = Update(P, K, PS, map);
+                G.show();
+                delay();
+            
+            }
+            //Over = Update(P, K, PS, map);
+            Over = true;
+        }*/
         //==================================================
     }
     
