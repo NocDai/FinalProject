@@ -74,3 +74,33 @@ OBJ Map::collision(Coordinate coord){
 OBJ Map::aplace(int x, int y){
     return place[y][x];
 }
+int** Map::getMap()
+{
+	/*int **output;
+	output=new int*[7];
+	for(int j=0;j<7;j++)
+	{
+		output[j]=new int[7];
+	}
+	for(int i=0;i<7;i++)
+	{
+		for(int j=0;j<7;j++)
+		{
+			if(place[i][j]==0)
+			{
+				output[i][j]=0;	
+			}
+			else
+			{
+				output[i][j]=1;
+			}
+		}
+	}
+	return output;
+	for(int i=0;i<7;i++)
+	{
+		delete output[i];
+	}
+	delete output;*/
+	return (int**)place;
+}

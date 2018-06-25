@@ -40,6 +40,7 @@ bool Update(Player& p, Key& k, PassSpot& ps, Map& m){
         return over;
     }
     if(p.dead_check()){
+        printf("FAIL\r\n");
         over = true;
     }
     if(p.key_check()){
