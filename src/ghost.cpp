@@ -68,9 +68,10 @@ void Ghost::walk(Player& pl, Map& m){
     else if(p == 'a') x--;
     else if(p == 'w') y--;
     else if(p == 'd') x++;
-    if(x>6) x=6;
+    //if(x>6) x=6;
+    if(x>m.getDim()-1) x=m.getDim()-1;
     else if (x<0)   x=0;
-    if(y>6) y=6;
+    if(y>m.getDim()-1) y=m.getDim()-1;
     else if (y<0)   y=0;
     
     OBJ obj = m.collision(*this);

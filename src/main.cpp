@@ -19,7 +19,17 @@ using namespace std;
 
 int main(int argc, char *argv[]){
     ifstream infile(argv[1]);
-    Map map(infile);
+    int dim=16;
+    //cout << argv[1] << endl;
+    /*
+    if(argv[1]=="./include/map.txt"){
+        dim=7;
+    }
+    else if(argv[1]=="./include/level3.txt"){
+        dim = 16;
+    }*/
+    cout << dim << endl;
+    Map map(infile,dim);
     //Map originalmap=map;
     map.printMap();
     

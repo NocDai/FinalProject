@@ -26,9 +26,9 @@ void Player::walk(char com, Map& m){
     else if(com == 'a') x--;
     else if(com == 'w') y--;
     else if(com == 'd') x++;
-    if(x>6) x=6;
+    if(x>m.getDim()-1) x=m.getDim()-1;
     else if (x<0)   x=0;
-    if(y>6) y=6;
+    if(y>m.getDim()-1) y=m.getDim()-1;
     else if (y<0)   y=0;
     if(! (set(Coordinate(pre_x, pre_y), m))){
         x = pre_x;
@@ -45,9 +45,9 @@ void Player::walk(Map& m){
     else if(com == 'a') x--;
     else if(com == 'w') y--;
     else if(com == 'd') x++;
-    if(x>6) x=6;
+    if(x>m.getDim()-1) x=m.getDim()-1;
     else if (x<0)   x=0;
-    if(y>6) y=6;
+    if(y>m.getDim()-1) y=m.getDim()-1;
     else if (y<0)   y=0;
     if(! (set(Coordinate(pre_x, pre_y), m))){
         x = pre_x;
