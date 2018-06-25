@@ -36,6 +36,7 @@ int maze[7][7]={
     {1,1,1,1,1,1,1}
 };
 
+//find
 void mazePath(void* maze,int m,int n, Point& startP, Point endP,vector<Point>& shortestPath){
     int** maze2d=new int*[m];
     for(int i=0;i<m;i++){

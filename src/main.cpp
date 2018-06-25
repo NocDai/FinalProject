@@ -58,18 +58,33 @@ int main(int argc, char *argv[]){
             G.show();
             delay();
         }
+        if(mode == 2){
+            g_speed++;
+            system("clear");
+            P.walk(map);
+            if(g_speed==10){
+                g_speed =0;
+                G.walk(P,map);
+                //P.walk(map);
+            }
+            //system("clear");
+            map.printMap();
+            Over = Update(P, K, PS, map);
+            G.show();
+            delay();
+        }
         //===========================================
-        else if(mode==2){
+        /*else if(mode==2){
             if(calc_flag==0){
-int maze[7][7]={
-    {1,1,1,1,1,1,1},
-    {1,0,1,1,1,0,1},
-    {1,0,0,1,0,0,1},
-    {1,0,1,0,0,0,1},
-    {1,0,0,0,1,1,1},
-    {1,1,0,0,0,0,1},
-    {1,1,1,1,1,1,1}
-};
+                int maze[7][7]={
+                    {1,1,1,1,1,1,1},
+                    {1,0,1,1,1,0,1},
+                    {1,0,0,1,0,0,1},
+                    {1,0,1,0,0,0,1},
+                    {1,0,0,0,1,1,1},
+                    {1,1,0,0,0,0,1},
+                    {1,1,1,1,1,1,1}
+                    };
                 
                 Point startP(1,1);  //start coordinate, 先假設拿到
                 Point keyP(1,5);    //key coordinate
@@ -123,11 +138,11 @@ int maze[7][7]={
                 Over = Update(P, K, PS, map);
                 G.show();
                 delay();
-            */
+            
             }
             //Over = Update(P, K, PS, map);
             Over = true;
-        }
+        }*/
         //==================================================
     }
     
