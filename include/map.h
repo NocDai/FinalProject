@@ -1,4 +1,5 @@
 #ifndef MAP_H
+
 #define MAP_H
 
 #include <iostream>
@@ -18,6 +19,7 @@ class Map{
         OBJ collision(Coordinate);
         Coordinate GetFreeplace();
         OBJ aplace(int x, int y);
+	int** getMap();
     protected:
         int dim;
         OBJ **place;
