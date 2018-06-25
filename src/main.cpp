@@ -20,6 +20,7 @@ using namespace std;
 int main(int argc, char *argv[]){
     ifstream infile(argv[1]);
     Map map(infile);
+    //Map originalmap=map;
     map.printMap();
     
     cout<<"Please choose the mode."<<endl
@@ -36,9 +37,8 @@ int main(int argc, char *argv[]){
     bool Over = false;
     int g_speed=0;
     //=====================
-    int calc_flag=0;
-    vector<Point> keyPath;
-    vector<Point> endPath;
+    vector<Coordinate> keyPath;
+    vector<Coordinate> endPath;
     //=====================
     while(!Over){
         if(mode == 1){
@@ -74,6 +74,27 @@ int main(int argc, char *argv[]){
             delay();
         }
         //===========================================
+        else if(mode==3){
+		int maze[7][7]={
+    		{1,1,1,1,1,1,1},
+    		{1,0,1,1,1,0,1},
+    		{1,0,0,1,0,0,1},
+    		{1,0,1,0,0,0,1},
+    		{1,0,0,0,1,1,1},
+    		{1,1,0,0,0,0,1},
+    		{1,1,1,1,1,1,1}
+		};
+		//int** omap=originalmap.getMap();	
+		Coordinate SP(1,1);
+		Coordinate KP(1,5);
+		Coordinate EP(5,5);
+        	mazePath(maze,7,7,SP,KP,keyPath);
+                Over = Update(P, K, PS, map);   //BFS不能一直更新
+                mazePath(maze,7,7,KP,EP,endPath);
+		//Over = Update(P, K, PS, map);   //BFS不能一直更新
+                cout<<"shortest path to key:";
+                for(vector<Coordinate>::reverse_iterator i=keyPath.rbegin(); i!=keyPath.rend(); ++i){
+                    printf("(%d,%d) ",i->getX(),i->getY());
         /*else if(mode==2){
             if(calc_flag==0){
                 int maze[7][7]={
@@ -120,19 +141,21 @@ int main(int argc, char *argv[]){
                         printf("(%d,%d) ",i->row,i->col);  
             
                     }
+>>>>>>> 515cd8751b1ca14150445a04a26ff760adb9ab86
                 }
                 cout << endl;
-            /*
-                g_speed++;
-            //get_command from父子節點
-            
-            
-                system("clear");
-                P.walk(command, map);
-                if(g_speed==10){
-                    g_speed =0;
-                    G.walk(P,map);
+		//map.printMap();
+		cout<<"shortest path from key to end:";
+                for(vector<Coordinate>::reverse_iterator i=endPath.rbegin(); i!=endPath.rend(); ++i){
+                    printf("(%d,%d) ",i->getX(),i->getY()); 
                 }
+<<<<<<< HEAD
+		cout << endl;
+		Over=true;
+            	//Over = Update(P, K, PS, map);
+	}
+        
+=======
                 //system("clear");
                 map.printMap();
                 Over = Update(P, K, PS, map);
