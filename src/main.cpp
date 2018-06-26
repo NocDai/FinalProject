@@ -19,25 +19,7 @@ using namespace std;
 
 int main(int argc, char *argv[]){
     ifstream infile(argv[1]);
-<<<<<<< HEAD
     int dim=17;
-=======
-    int dim=15,level=0;
->>>>>>> 87162c745d60830867872e45040b5e31f7ae43fd
-    cout << argv[1] << endl;
-    
-    /*
-    if(argv[1]=="./include/map.txt"){
-        dim=7;
-    }
-    else if(argv[1]=="./include/level3.txt"){
-<<<<<<< HEAD
-        dim = 17;
-    }
-=======
-        dim = 16;
-    }*/
->>>>>>> 87162c745d60830867872e45040b5e31f7ae43fd
     cout << dim << endl;
     Map map(infile,dim);
     //Map originalmap=map;
