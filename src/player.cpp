@@ -63,8 +63,7 @@ bool Player::set(Coordinate pre, Map& m){
     if(obj == Non){
         m.setPlace(pre, Non);
         m.setPlace(*this , player);
-        if(score[*this]==0)
-            score[*this]-=1;
+        score[*this]= -1;
         return true;
     }
     else if(obj == Wall){
@@ -153,6 +152,7 @@ void Player::remember(Map &m){
     float GAMMA = 0.00005;
     for(map<Coordinate,float>::iterator it = score.begin(); it!=score.end(); it++){
         //if(m.collision(it->first)!=Non)
+            //it->second += 0.001;
             it->second *= GAMMA;
     }
     
@@ -210,6 +210,11 @@ char Player::find_path(Map &m){
         if(policy[i]>policy[i+1]){
             policy[i+1]=policy[i];
             path[i+1] = path[i];
+        }
+        else if (policy[i]==policy[i+1]){
+            int j= rand()%2;
+            policy[i+1] = policy[i+j];
+            path[i+1] = path[i+j];
         }
     }
     return path[3];
