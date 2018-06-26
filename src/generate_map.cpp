@@ -5,8 +5,8 @@
 #include <ctime>
 #include <cstdlib>
 using namespace std;
-#define m 13//row+2 = dim
-#define n 13//column
+#define m 23//row+2 = dim
+#define n 23//column
 #define down 1
 #define right 2
 #define left 4
@@ -132,7 +132,7 @@ int** gen_map(){
 
 
 int main(){
-    ofstream out_file("level3.txt");
+    ofstream out_file("level4.txt");
     int **mat;
     mat = gen_map();
     for(int i=0;i<=m+1;i++){
