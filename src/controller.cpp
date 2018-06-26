@@ -5,7 +5,6 @@
 
 #include "controller.h"
 
-bool over = false;
 bool win = false;
 int kbhit(void)  
 {  
@@ -34,6 +33,7 @@ void delay(void){
 }
 
 bool Update(Player& p, Key& k, PassSpot& ps, Map& m){
+    bool over = false;
     if(p.pass_check()){
         over = true;
         printf("You Win\r\n");

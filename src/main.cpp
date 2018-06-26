@@ -19,7 +19,7 @@ using namespace std;
 
 int main(int argc, char *argv[]){
     ifstream infile(argv[1]);
-    int dim=15;
+    int dim=15,level=0;
     cout << argv[1] << endl;
     
     /*
@@ -175,6 +175,8 @@ int main(int argc, char *argv[]){
         }*/
         //==================================================
     }
+    
+    if(P.pass_check()==1){
     ifstream infile2(argv[2]);
     dim=25;
     Map map2(infile2,dim);
@@ -190,10 +192,10 @@ int main(int argc, char *argv[]){
     Ghost G2(map2.GetFreeplace(),map2);
     map2.printMap();
     char command2 = '\0';
-    bool Over2 = false;
+    Over = false;
     g_speed=0;
-    while(!Over2){
-        if(mode == 1){
+    while(!Over){
+        if(mode2 == 1){
             g_speed++;
             command2='\0';
             if(kbhit())
@@ -206,11 +208,11 @@ int main(int argc, char *argv[]){
             }
             //system("clear");
             map2.printMap();
-            Over2 = Update(P2, K2, PS2, map2);
+            Over = Update(P2, K2, PS2, map2);
             G2.show();
             delay();
         }
-        if(mode == 2){
+        else if(mode2 == 2){
             g_speed++;
             system("clear");
             P2.walk(map2);
@@ -221,10 +223,11 @@ int main(int argc, char *argv[]){
             }
             //system("clear");
             map2.printMap();
-            Over2 = Update(P2, K2, PS2, map2);
+            Over = Update(P2, K2, PS2, map2);
             G2.show();
             delay();
         }
+    }
     }
     
     return 0;

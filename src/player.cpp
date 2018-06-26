@@ -77,7 +77,7 @@ bool Player::set(Coordinate pre, Map& m){
     }
     else if(obj == ghost){
         m.setPlace(pre,Non);
-        //isdead =true;
+        isdead =true;
     }
     return true;
 }
