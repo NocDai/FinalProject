@@ -23,16 +23,6 @@ class Coordinate{
         void show(){
             cout<<x<<','<<y<<endl;
         }
-    	bool operator==(const Coordinate& cor) const{
-            if(this->x==cor.x&&this->y==cor.y)
-                return true;
-            return false;
-    	}
-    	bool operator==(const Coordinate& cor) const{
-            if(this->x==cor.x&&this->y==cor.y)
-                return true;
-            return false;
-    	}
         bool operator<(const Coordinate& coord) const{
             if(x<coord.x)
                 return true;
