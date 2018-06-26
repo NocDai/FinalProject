@@ -19,15 +19,25 @@ using namespace std;
 
 int main(int argc, char *argv[]){
     ifstream infile(argv[1]);
+<<<<<<< HEAD
     int dim=17;
+=======
+    int dim=15,level=0;
+>>>>>>> 87162c745d60830867872e45040b5e31f7ae43fd
     cout << argv[1] << endl;
     
+    /*
     if(argv[1]=="./include/map.txt"){
         dim=7;
     }
     else if(argv[1]=="./include/level3.txt"){
+<<<<<<< HEAD
         dim = 17;
     }
+=======
+        dim = 16;
+    }*/
+>>>>>>> 87162c745d60830867872e45040b5e31f7ae43fd
     cout << dim << endl;
     Map map(infile,dim);
     //Map originalmap=map;
@@ -82,6 +92,60 @@ int main(int argc, char *argv[]){
             delay();
         }
     }
+    if(P.pass_check()==1){
+    ifstream infile2(argv[2]);
+    dim=25;
+    Map map2(infile2,dim);
+    map2.printMap();
+    cout<<"Please choose the mode."<<endl
+        <<"input 1 for manual."<<endl
+        <<"input 2 for auto."<<endl;
+    int mode2;
+    cin >>mode2;
+    Player P2(map2.GetFreeplace(), map2, mode2);
+    Key K2(map2.GetFreeplace(), map2);
+    PassSpot PS2(map2.GetFreeplace(), map2);
+    Ghost G2(map2.GetFreeplace(),map2);
+    map2.printMap();
+    char command2 = '\0';
+    Over = false;
+    g_speed=0;
+    while(!Over){
+        if(mode2 == 1){
+            g_speed++;
+            command2='\0';
+            if(kbhit())
+                command2 = getchar();
+            system("clear");
+            P2.walk(command2, map2);
+            if(g_speed==10){
+                g_speed =0;
+                G2.walk(P2,map2);
+            }
+            //system("clear");
+            map2.printMap();
+            Over = Update(P2, K2, PS2, map2);
+            G2.show();
+            delay();
+        }
+        else if(mode2 == 2){
+            g_speed++;
+            system("clear");
+            P2.walk(map2);
+            if(g_speed==10){
+                g_speed =0;
+                G2.walk(P2,map2);
+                //P.walk(map);
+            }
+            //system("clear");
+            map2.printMap();
+            Over = Update(P2, K2, PS2, map2);
+            G2.show();
+            delay();
+        }
+    }
+    }
+    
     if(P.pass_check()==1){
     ifstream infile2(argv[2]);
     dim=25;
