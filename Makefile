@@ -28,7 +28,7 @@ ghost.o:
 	
 
 run:
-	./main ./include/map.txt
+	./main ./include/level3.txt
 
 clean:
 	rm -f main.o controller.o player.o map.o keyandpass.o ghost.o main

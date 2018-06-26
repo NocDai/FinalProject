@@ -1,13 +1,13 @@
 #include "map.h"
 
-Map:: Map(ifstream &file):dim(7){
+Map:: Map(ifstream &file,int dm):dim(dm){
     place = new OBJ *[dim];
     for (int i = 0; i < dim; i++)
         place[i] = new OBJ [dim];
         
     int next;
-    for(int i=0; i<7; i++){
-        for(int j=0; j<7; j++){
+    for(int i=0; i<dim; i++){
+        for(int j=0; j<dim; j++){
             file >> next;
             place[i][j] = (OBJ)next;
         }
@@ -23,8 +23,8 @@ Map::~Map(){
 
 void Map::printMap(){
     cout << "\r\n";
-    for(int i=0; i<7; i++){
-        for(int j=0; j<7; j++){
+    for(int i=0; i<dim; i++){
+        for(int j=0; j<dim; j++){
             if(place[i][j]==0)  cout<<' ';
             else if(place[i][j]==1) cout<<"■";
             else if(place[i][j]==2) cout<<'P';
@@ -73,6 +73,9 @@ OBJ Map::collision(Coordinate coord){
 
 OBJ Map::aplace(int x, int y){
     return place[y][x];
+}
+int Map::getDim(){
+    return dim;
 }
 int** Map::getMap()
 {

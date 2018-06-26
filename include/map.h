@@ -11,7 +11,7 @@ using namespace std;
 enum OBJ {Non,Wall,player,ghost,key,spot};
 class Map{
     public:
-        Map(ifstream &file);
+        Map(ifstream &file,int);
         ~Map();
         void printMap();
         bool setPlace(Coordinate, OBJ);
@@ -20,6 +20,7 @@ class Map{
         Coordinate GetFreeplace();
         OBJ aplace(int x, int y);
 	int** getMap();
+	    int getDim();
     protected:
         int dim;
         OBJ **place;

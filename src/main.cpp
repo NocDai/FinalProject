@@ -19,7 +19,17 @@ using namespace std;
 
 int main(int argc, char *argv[]){
     ifstream infile(argv[1]);
-    Map map(infile);
+    int dim=16;
+    //cout << argv[1] << endl;
+    /*
+    if(argv[1]=="./include/map.txt"){
+        dim=7;
+    }
+    else if(argv[1]=="./include/level3.txt"){
+        dim = 16;
+    }*/
+    cout << dim << endl;
+    Map map(infile,dim);
     //Map originalmap=map;
     map.printMap();
     
@@ -95,6 +105,8 @@ int main(int argc, char *argv[]){
                 cout<<"shortest path to key:";
                 for(vector<Coordinate>::reverse_iterator i=keyPath.rbegin(); i!=keyPath.rend(); ++i){
                     printf("(%d,%d) ",i->getX(),i->getY());
+                }
+        }
         /*else if(mode==2){
             if(calc_flag==0){
                 int maze[7][7]={
@@ -141,7 +153,6 @@ int main(int argc, char *argv[]){
                         printf("(%d,%d) ",i->row,i->col);  
             
                     }
->>>>>>> 515cd8751b1ca14150445a04a26ff760adb9ab86
                 }
                 cout << endl;
 		//map.printMap();
@@ -149,13 +160,8 @@ int main(int argc, char *argv[]){
                 for(vector<Coordinate>::reverse_iterator i=endPath.rbegin(); i!=endPath.rend(); ++i){
                     printf("(%d,%d) ",i->getX(),i->getY()); 
                 }
-<<<<<<< HEAD
-		cout << endl;
-		Over=true;
-            	//Over = Update(P, K, PS, map);
 	}
         
-=======
                 //system("clear");
                 map.printMap();
                 Over = Update(P, K, PS, map);
