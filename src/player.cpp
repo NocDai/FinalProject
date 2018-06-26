@@ -1,6 +1,7 @@
 #include "player.h"
 #include <stdlib.h>
 #include <cmath>
+#include <ctime>
 Player::Player(int x, int y, Map& m, int _mode)
         :Coordinate(x, y)
 {
@@ -62,6 +63,8 @@ bool Player::set(Coordinate pre, Map& m){
     if(obj == Non){
         m.setPlace(pre, Non);
         m.setPlace(*this , player);
+        if(score[*this]==0)
+            score[*this]-=1;
         return true;
     }
     else if(obj == Wall){
@@ -187,6 +190,7 @@ char Player::find_path(Map &m){
     }
     cout<<policy[0]<<' '<<policy[1]<<' '<<policy[2]<<' '<<policy[3]<<endl;
     char path[4]= {'w', 'a', 's', 'd'};
+    srand(time(NULL));
     if(policy[0]==0 && policy[1]==0 && policy[2]==0 && policy[3]==0){
         policy[0] = rand()%50;
         policy[1] = rand()%50;
@@ -194,14 +198,14 @@ char Player::find_path(Map &m){
         policy[3] = rand()%50;
     }
     
-    if(m.aplace(x,y-1)==Wall)   policy[0]=-1;
-    else if(m.aplace(x,y-1)==ghost) policy[0]= -1;
-    if(m.aplace(x-1,y)==Wall)   policy[1]=-1;
-    else if(m.aplace(x-1,y)==ghost) policy[1]= -1;
-    if(m.aplace(x,y+1)==Wall)   policy[2]=-1;
-    else if(m.aplace(x-1,y)==ghost) policy[2]= -1;
-    if(m.aplace(x+1,y)==Wall)   policy[3]=-1;
-    else if(m.aplace(x-1,y)==ghost) policy[3]= -1;
+    if(m.aplace(x,y-1)==Wall)   policy[0]=-1000000;
+    else if(m.aplace(x,y-1)==ghost) policy[0]= -1000000;
+    if(m.aplace(x-1,y)==Wall)   policy[1]=-1000000;
+    else if(m.aplace(x-1,y)==ghost) policy[1]= -1000000;
+    if(m.aplace(x,y+1)==Wall)   policy[2]=-1000000;
+    else if(m.aplace(x-1,y)==ghost) policy[2]= -1000000;
+    if(m.aplace(x+1,y)==Wall)   policy[3]=-1000000;
+    else if(m.aplace(x-1,y)==ghost) policy[3]= -1000000;
     for(int i=0;i<4;i++){
         if(policy[i]>policy[i+1]){
             policy[i+1]=policy[i];
