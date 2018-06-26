@@ -18,7 +18,7 @@ class Player: public Coordinate{
         bool pass_check();
     private:
         int mode;
-        int sight[3][3];
+        int sight[5][5];
         map<Coordinate,int> mapping;
         map<Coordinate,float> score; 
         bool isdead;
@@ -28,6 +28,8 @@ class Player: public Coordinate{
         void remember(Map &);
         char find_path(Map &);
         bool set(Coordinate, Map&);
+        int repeat_command[4];
+        char last_command;
         
 };
 

@@ -19,14 +19,14 @@ using namespace std;
 
 int main(int argc, char *argv[]){
     ifstream infile(argv[1]);
-    int dim=15;
+    int dim=17;
     cout << argv[1] << endl;
     
     if(argv[1]=="./include/map.txt"){
         dim=7;
     }
     else if(argv[1]=="./include/level3.txt"){
-        dim = 16;
+        dim = 17;
     }
     cout << dim << endl;
     Map map(infile,dim);
@@ -65,7 +65,6 @@ int main(int argc, char *argv[]){
             //system("clear");
             map.printMap();
             Over = Update(P, K, PS, map);
-            G.show();
             delay();
         }
         if(mode == 2){
@@ -80,7 +79,6 @@ int main(int argc, char *argv[]){
             //system("clear");
             map.printMap();
             Over = Update(P, K, PS, map);
-            G.show();
             delay();
         }
         //===========================================
