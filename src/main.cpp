@@ -107,7 +107,7 @@ int main(int argc, char *argv[]){
             //system("clear");
             map2.printMap();
             Over = Update(P2, K2, PS2, map2);
-            G2.show();
+            //G2.show();
             delay();
         }
         else if(mode2 == 2){
@@ -122,12 +122,12 @@ int main(int argc, char *argv[]){
             //system("clear");
             map2.printMap();
             Over = Update(P2, K2, PS2, map2);
-            G2.show();
+            //G2.show();
             delay();
         }
     }
     }
-    
+    /*
     if(P.pass_check()==1){
     ifstream infile2(argv[2]);
     dim=25;
@@ -181,6 +181,6 @@ int main(int argc, char *argv[]){
         }
     }
     }
-    
+    */
     return 0;
 }
